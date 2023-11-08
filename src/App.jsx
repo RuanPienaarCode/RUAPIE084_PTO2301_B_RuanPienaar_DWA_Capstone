@@ -1,6 +1,8 @@
 //App.jsx
 import React, { useEffect, useState } from 'react';
 import ShowsList from './components/ShowsList';
+import './App.css';
+import './index.css';
 
 function App() {
   const [shows, setShows] = useState([]);
@@ -15,7 +17,7 @@ function App() {
 
   return (
     <div>
-      <h1>Podcast Shows</h1>
+      <h1>Podcast Shows Test</h1>
       <ShowsList shows={shows} setSelectedShow={setSelectedShow} />
       {selectedShow && <Show show={selectedShow} />}
     </div>
