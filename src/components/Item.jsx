@@ -8,7 +8,7 @@ function Item({ season }) {
       <h4>
         Season {season.season}: {season.title}
       </h4>
-      <img src={season.image} alt={season.title} />
+      <img class='showImage' src={season.image} alt={season.title} />
       <ul>
         {season.episodes.map((episode) => (
           <li key={episode.title}>

@@ -1,0 +1,2 @@
+/*
+  Permissions-Policy: attribution-reporting=(self), run-ad-auction=(self), join-ad-interest-group=(self), browsing-topics=(self)
