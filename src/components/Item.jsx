@@ -1,5 +1,6 @@
 // components/Item.js
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 function Item({ season }) {
   return (

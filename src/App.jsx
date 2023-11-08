@@ -1,3 +1,4 @@
+//App.jsx
 import React, { useEffect, useState } from 'react';
 import ShowsList from './components/ShowsList';
 
@@ -8,13 +9,15 @@ function App() {
   useEffect(() => {
     fetch('https://podcast-api.netlify.app/shows')
       .then((response) => response.json())
-      .then((data) => setShows(data));
+      .then((data) => setShows(data))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
     <div>
       <h1>Podcast Shows</h1>
-      <ShowsList />
+      <ShowsList shows={shows} setSelectedShow={setSelectedShow} />
+      {selectedShow && <Show show={selectedShow} />}
     </div>
   );
 }

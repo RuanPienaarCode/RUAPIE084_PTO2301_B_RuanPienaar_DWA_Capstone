@@ -10,9 +10,7 @@ function Show({ show }) {
       <img src={show.image} alt={show.title} />
       <div>
         <h3>Seasons and Episodes</h3>
-        {/* {show.seasons.map((season) => (
-          <Item key={season.season} season={season} />
-        ))} */}
+        {Array.isArray(show.seasons) ? show.seasons.map((season) => <Item key={season.season} season={season} />) : <p>No seasons available for this show.</p>}
       </div>
     </div>
   );
