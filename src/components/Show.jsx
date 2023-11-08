@@ -10,9 +10,9 @@ function Show({ show }) {
       <img src={show.image} alt={show.title} />
       <div>
         <h3>Seasons and Episodes</h3>
-        {show.seasons.map((season) => (
+        {/* {show.seasons.map((season) => (
           <Item key={season.season} season={season} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
