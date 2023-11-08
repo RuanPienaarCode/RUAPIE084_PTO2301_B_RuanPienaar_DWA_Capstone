@@ -69,10 +69,25 @@ button:focus-visible {
   }
 }
 
-.showImage {
-  width: 260px;
+.showCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  padding: 16px;
+  border: 1px solid #ccc;
+  margin: 16px;
+  border-radius: 8px;
 }
 
-.showCard {
-  width: 270px;
+.showImage {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  margin: 16px 0;
+}
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the column size as needed */
+  gap: 16px; /* Adjust the gap between items as needed */
 }
