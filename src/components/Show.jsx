@@ -4,10 +4,10 @@ import Item from './Item';
 
 function Show({ show }) {
   return (
-    <div key={show.id}>
+    <div class='showCard' key={show.id}>
       <h2>{show.title}</h2>
       <p>{show.description}</p>
-      <img src={show.image} alt={show.title} />
+      <img class='showImage' src={show.image} alt={show.title} />
       <div>
         <h3>Seasons and Episodes</h3>
         {Array.isArray(show.seasons) ? show.seasons.map((season) => <Item key={season.season} season={season} />) : <p>No seasons available for this show.</p>}
