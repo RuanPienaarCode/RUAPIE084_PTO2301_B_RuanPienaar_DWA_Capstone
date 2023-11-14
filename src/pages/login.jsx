@@ -6,6 +6,7 @@ import {
   ThemeSupa,
 } from '@supabase/auth-ui-shared';
 import { useNavigate } from 'react-router-dom';
+// import Header from '../components/header';
 
 const supabase = createClient(
   'https://luspkgilingfnlvmjers.supabase.co',
@@ -14,17 +15,16 @@ const supabase = createClient(
 
 function Login() {
   const navigate = useNavigate();
-
   useEffect(() => {
-    const authStateChange = async (event) => {
+    supabase.auth.onAuthStateChange(async (event) => {
       if (event !== 'SIGNED_OUT') {
         // Forward to success URL
-        navigate('/success');
+        navigate('/login');
       } else {
         // Forward to login URL
         navigate('/');
       }
-    };
+    });
   });
 
   //   // Subscribe to auth state changes

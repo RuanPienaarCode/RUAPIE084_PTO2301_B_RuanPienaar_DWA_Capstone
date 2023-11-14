@@ -8,6 +8,7 @@ import './index.css';
 import Login from './pages/login.jsx';
 import Homepage from './pages/home.jsx';
 import SuccessAuth from './pages/success.jsx';
+import Test from './pages/test.jsx';
 
 function App() {
   //   const [shows, setShows] = useState([]);
@@ -27,6 +28,7 @@ function App() {
         {/* Add a route for "/login" */}
         <Route path="/login" element={<Login />} />
         <Route path="/success" element={<SuccessAuth />} />
+        <Route path="/test" element={<test />} />
       </Routes>
     </Router>
   );
