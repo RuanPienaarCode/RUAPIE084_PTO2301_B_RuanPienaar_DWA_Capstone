@@ -1,3 +1,4 @@
+// pages/login.jsx;
 import React, { useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Auth } from '@supabase/auth-ui-react';
@@ -19,15 +20,19 @@ function Login() {
   const navigate = useNavigate();
   useEffect(() => {
     supabase.auth.onAuthStateChange(async (event) => {
-      if (event !== 'SIGNED_OUT') {
-        // Forward to success URL
-        navigate('/login');
-      } else {
-        // Forward to login URL
-        navigate('/');
+      try {
+        if (event !== 'SIGNED_OUT') {
+          // Forward to success URL
+          navigate('/login');
+        } else {
+          // Forward to login URL
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error during navigation:', error);
       }
     });
-  });
+  }, [navigate]);
 
   //   // Subscribe to auth state changes
   //   const unsubscribe = supabase.auth.onAuthStateChange(authStateChange);

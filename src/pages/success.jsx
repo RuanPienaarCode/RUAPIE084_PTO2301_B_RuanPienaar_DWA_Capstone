@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Auth } from '@supabase/auth-ui-react';
-import {
-  // Import predefined theme
-  ThemeSupa,
-} from '@supabase/auth-ui-shared';
+// import {
+//   // Import predefined theme
+//   ThemeSupa,
+// } from '@supabase/auth-ui-shared';
 import { useNavigate } from 'react-router-dom';
-// import Header from '../components/header';
+// // import Header from '../components/header';
 
-const supabase = createClient(
-  'https://luspkgilingfnlvmjers.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1c3BrZ2lsaW5nZm5sdm1qZXJzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5OTM5MDIwNywiZXhwIjoyMDE0OTY2MjA3fQ.Q39xLVAbeq5zkcmugmujZu6YchN1TpB4q7imf0hOy9A'
-);
+// const supabase = createClient(
+//   'https://luspkgilingfnlvmjers.supabase.co',
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1c3BrZ2lsaW5nZm5sdm1qZXJzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5OTM5MDIwNywiZXhwIjoyMDE0OTY2MjA3fQ.Q39xLVAbeq5zkcmugmujZu6YchN1TpB4q7imf0hOy9A'
+// );
 
 function SuccessAuth() {
   const [user, setUser] = useState({});

@@ -1,10 +1,9 @@
-//App.jsx
-
+// App.jsx
 import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+// import Container from '@mui/material/Container';
+// import Typography from '@mui/material/Typography';
+// import Box from '@mui/material/Box';
 // import ShowsList from './components/ShowsList';
 import './App.css';
 import './index.css';

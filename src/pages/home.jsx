@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+//pages/home.jsx
+// import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { ThemeProvider, styled } from '@mui/system';
-import Button from '@mui/material/Button';
+// import { ThemeProvider, styled } from '@mui/system';
+// import Button from '@mui/material/Button';
 import Layout from '../components/Layout';
 
 function Homepage() {

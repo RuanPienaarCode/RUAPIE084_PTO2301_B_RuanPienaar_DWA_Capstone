@@ -1,6 +1,5 @@
 /* App.css */
 #root {
-  width: 100%;
   /* max-width: 1280px; */
   margin: 0 auto;
   /* padding: 2rem; */
@@ -12,6 +11,7 @@ body {
 }
 
 .t-deGdmh {
+  width: 300px;
   text-align: center; /* For inline or inline-block elements */
   margin: 0 auto; /* For block-level elements */
   display: block; /* Ensure the element is a block-level element */
