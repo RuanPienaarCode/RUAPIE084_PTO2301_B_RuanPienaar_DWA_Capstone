@@ -1,14 +1,6 @@
-//test.jsx
+//pages/test.jsx
 
-import React, { useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
-import {
-  // Import predefined theme
-  ThemeSupa,
-} from '@supabase/auth-ui-shared';
-import { useNavigate } from 'react-router-dom';
-
+import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,7 +18,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Test() {
+function TestBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -46,7 +38,7 @@ function Test() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -159,11 +151,10 @@ function Test() {
                 </MenuItem>
               ))}
             </Menu>
-            <h1>Test</h1>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default Test;
+export default TestBar;

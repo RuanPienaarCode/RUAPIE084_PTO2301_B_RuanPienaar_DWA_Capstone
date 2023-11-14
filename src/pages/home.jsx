@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ThemeProvider, styled } from '@mui/system';
-import { theme } from '../styles/theme';
-// import Header from '../components/header';
 import Button from '@mui/material/Button';
+import Layout from '../components/Layout';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ function Homepage() {
   };
 
   return (
-    <div>
+    <Layout>
       <h1>Podcast Shows Test</h1>
       {/* <ShowsList shows={shows} setSelectedShow={setSelectedShow} /> */}
       {/* {selectedShow && <Show show={selectedShow} />} */}
@@ -27,7 +26,7 @@ function Homepage() {
       >
         Login
       </button>
-    </div>
+    </Layout>
   );
 }
 

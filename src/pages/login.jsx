@@ -6,6 +6,8 @@ import {
   ThemeSupa,
 } from '@supabase/auth-ui-shared';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+
 // import Header from '../components/header';
 
 const supabase = createClient(
@@ -35,11 +37,12 @@ function Login() {
   // }, [navigate]);
 
   return (
-    <div className="App">
+    <Layout className="App">
       <header className="App-header">
+        <h1>Login</h1>
         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" providers={['discord', 'github']} />
       </header>
-    </div>
+    </Layout>
   );
 }
 

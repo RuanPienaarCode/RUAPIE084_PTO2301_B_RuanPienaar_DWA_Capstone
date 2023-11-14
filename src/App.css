@@ -3,7 +3,7 @@
   width: 100%;
   /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -11,7 +11,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.logo {
+.t-deGdmh {
+  text-align: center; /* For inline or inline-block elements */
+  margin: 0 auto; /* For block-level elements */
+  display: block; /* Ensure the element is a block-level element */
+}
+
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -46,4 +52,4 @@ body {
 
 .read-the-docs {
   color: #888;
-}
+} */
