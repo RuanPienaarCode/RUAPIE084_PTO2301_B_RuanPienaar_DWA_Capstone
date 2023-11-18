@@ -8,13 +8,11 @@ import {
 } from '@supabase/auth-ui-shared';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import { supabaseLink, supabaseSecret } from '../secure';
 
 // import Header from '../components/header';
 
-const supabase = createClient(
-  'https://luspkgilingfnlvmjers.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1c3BrZ2lsaW5nZm5sdm1qZXJzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5OTM5MDIwNywiZXhwIjoyMDE0OTY2MjA3fQ.Q39xLVAbeq5zkcmugmujZu6YchN1TpB4q7imf0hOy9A'
-);
+const supabase = createClient(supabaseLink, supabaseSecret);
 
 function Login() {
   const navigate = useNavigate();
