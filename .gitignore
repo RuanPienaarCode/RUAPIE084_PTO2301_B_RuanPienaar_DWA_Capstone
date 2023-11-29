@@ -12,3 +12,4 @@ build/
 
 src/secure.jsx
 node_modules
+src/DeleteFolder
