@@ -1,33 +1,53 @@
-//pages/home.jsx
-// import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { ThemeProvider, styled } from '@mui/system';
-// import Button from '@mui/material/Button';
-import Layout from '../components/Layout';
+import Navbar from '../components/Navbar';
+import React, { useEffect } from 'react';
+import { supabase } from '../supabase/SupabaseClient';
+import { useSelector, useDispatch } from 'react-redux';
+import { GithubLogin } from '../store/authSlice';
+import ShowsList from '/src/components/ShowsList';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import AudioPlayer from '/src/components/AudioPlayer';
+import TransitionsModal from '../components/ShowDetailsModal';
 
-function Homepage() {
-  const navigate = useNavigate();
-  // Define a function to handle page changes
-  const handlePageChange = (page) => {
-    // You can add logic here to perform actions based on the selected page if needed
-    console.log(`Navigating to ${page}`);
-    navigate('/' + page); // Assuming your pages are at the root level; adjust as needed
-  };
+export default function Home() {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authReducer);
 
-  return (
-    <Layout>
-      <h1>Podcast Shows Test</h1>
-      {/* <ShowsList shows={shows} setSelectedShow={setSelectedShow} /> */}
-      {/* {selectedShow && <Show show={selectedShow} />} */}
-      <button
-        onClick={() => {
-          navigate('/login');
-        }}
-      >
-        Login
-      </button>
-    </Layout>
-  );
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN') {
+        supabase.auth.getUser().then((value) => {
+          if (value) {
+            dispatch(GithubLogin({ user: value.data.user }));
+          }
+        });
+      }
+    });
+  }, []);
+
+  if (user.email) {
+    return (
+      <div>
+        <Box className="home-box">
+          <Navbar />
+          <ShowsList />
+          <AudioPlayer />
+        </Box>
+      </div>
+    );
+  }
+  if (!user.email) {
+    return (
+      <div>
+        <Box className="home-box">
+          <Navbar />
+          <ShowsList />
+          <TransitionsModal />
+        </Box>
+        <AudioPlayer />
+      </div>
+    );
+  } else {
+    return <div>error</div>;
+  }
 }
-
-export default Homepage;

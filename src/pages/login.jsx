@@ -1,52 +1,54 @@
-// pages/login.jsx;
-import React, { useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
-import {
-  // Import predefined theme
-  ThemeSupa,
-} from '@supabase/auth-ui-shared';
-import { useNavigate } from 'react-router-dom';
-import Layout from '../components/Layout';
-import { supabaseLink, supabaseSecret } from '../secure';
+import React,{useEffect,useState} from 'react'
+import Input from '../components/Input'
+import  '../global.css'
+import Backgorund from '../components/Backgorund'
+import Navbar from '../components/Navbar'
+import Main from '../styles/main-component-style'
+import Bar from '../styles/bar-component-style'
+import  { supabase }  from '../supabase/SupabaseClient'
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineGithub } from "react-icons/ai";
+import { FaDiscord } from "react-icons/fa";
+import '../global.css'
 
-// import Header from '../components/header';
 
-const supabase = createClient(supabaseLink, supabaseSecret);
+export default function Login() {
 
-function Login() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    supabase.auth.onAuthStateChange(async (event) => {
-      try {
-        if (event !== 'SIGNED_OUT') {
-          // Forward to success URL
-          navigate('/login');
-        } else {
-          // Forward to login URL
-          navigate('/');
-        }
-      } catch (error) {
-        console.error('Error during navigation:', error);
-      }
-    });
-  }, [navigate]);
-
-  //   // Subscribe to auth state changes
-  //   const unsubscribe = supabase.auth.onAuthStateChange(authStateChange);
-
-  //   // Clean up subscription on component unmount
-  //   return () => unsubscribe();
-  // }, [navigate]);
-
-  return (
-    <Layout className="App">
-      <header className="App-header">
-        <h1>Login</h1>
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" providers={['discord', 'github']} />
-      </header>
-    </Layout>
-  );
-}
-
-export default Login;
+  const login = async (provider) => {
+    await supabase.auth.signInWithOAuth({provider: provider,
+      redirectTo: 'http://localhost:3000/'
+    })
+  }
+  
+  if (!localStorage.getItem('sb-iljjyaxfycermifsypsy-auth-token')) {
+    return (
+      <Bar>
+    <Navbar/>
+  <Main>
+    <Backgorund>
+    <span style={{fontSize: 40, marginBottom: 15, fontWeight: 500,color: "#222"}}>Login</span>
+      <Input onClick={() => login('google')}>
+        <FcGoogle style={{marginRight: "auto"}} size={30} color="white" />
+        <span style={{flex: 1}}>Sign in with Google</span>
+      </Input>
+      <Input onClick={() => login('github')}>
+        <AiOutlineGithub style={{marginRight: "auto"}} size={30}/>
+        <span style={{flex: 1}}>Sign in with Github</span>
+      </Input>
+      <Input onClick={() => login('discord')}>
+        <FaDiscord style={{marginRight: "auto"}} size={30} color="#5562EA"/>
+        <span style={{flex: 1}}>Sign in with Discord</span>
+      </Input>
+    </Backgorund>
+  </Main>
+</Bar>
+    )
+  }
+  if(localStorage.getItem('sb-iljjyaxfycermifsypsy-auth-token')){
+    <div>
+      {window.location.href = "/"}
+      
+    </div>
+  }
+    
+  }

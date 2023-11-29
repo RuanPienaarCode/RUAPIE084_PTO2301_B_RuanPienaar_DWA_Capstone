@@ -11,3 +11,4 @@ build/
 .env
 
 src/secure.jsx
+node_modules

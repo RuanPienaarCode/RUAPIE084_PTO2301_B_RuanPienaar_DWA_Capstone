@@ -1,55 +1,46 @@
 /* App.css */
-#root {
-  /* max-width: 1280px; */
-  margin: 0 auto;
-  /* padding: 2rem; */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+.App {
   text-align: center;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-y: auto; /* Add this line to allow vertical scrolling */
+}
+
+html,
+body,
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+main {
+  flex: 1;
 }
 
 .t-deGdmh {
-  width: 300px;
+  width: 400px;
   text-align: center; /* For inline or inline-block elements */
   margin: 0 auto; /* For block-level elements */
   display: block; /* Ensure the element is a block-level element */
 }
 
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-  cursor: pointer;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.shows-container {
+  width: 100%; /* Adjust the width as needed */
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-box {
+  padding-bottom: 200px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
