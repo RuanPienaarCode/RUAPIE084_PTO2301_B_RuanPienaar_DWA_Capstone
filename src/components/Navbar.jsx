@@ -1,11 +1,9 @@
 import React, { useRef } from 'react';
-import '../global.css';
 import { supabase } from '../supabase/SupabaseClient';
 import { NavLink } from 'react-router-dom';
 import AdbIcon from '@mui/icons-material/FlashOn';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import '../global.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { GithubLogin } from '../store/authSlice';
 import configJson from '../config';

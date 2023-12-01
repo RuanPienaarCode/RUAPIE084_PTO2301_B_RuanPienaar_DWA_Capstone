@@ -1,15 +1,13 @@
-// components/ShowsList.js
 import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import { Grid } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import { Skeleton } from '@mui/material';
+import {
+  CircularProgress,
+  Container,
+  Grid,
+  styled,
+  Paper,
+  Skeleton,
+} from '@mui/material';
 import MainImageCard from './Item';
-import { Modal } from '@mui/material';
 import ShowDetailsModal from './ShowDetailsModal';
 import './ShowList.css';
 
@@ -26,7 +24,7 @@ function ShowsList() {
   const [shows, setShows] = useState([]);
   const [showCount, setShowCount] = useState();
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [selectedShow, setSelectedShow] = useState(null); // Track the selected show
+  const [selectedShow, setSelectedShow] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleShowClick = (show) => {
@@ -47,15 +45,30 @@ function ShowsList() {
       if (storedData && storedTimestamp) {
         const currentTime = new Date().getTime();
         const storedTime = new Date(Number(storedTimestamp)).getTime();
-        const timeDiff = (currentTime - storedTime) / (1000 * 60 * 60); // Calculate time difference in hours
+        const timeDiff = (currentTime - storedTime) / (1000 * 60 * 60);
 
         if (timeDiff < 2) {
-          // Use stored data if it's less than 2 hours old
           setShows(JSON.parse(storedData));
           setLoading(false);
           return;
         }
       }
+
+      // Function to group shows by genre
+      const groupShowsByGenre = (shows) => {
+        const groupedShows = {};
+        shows.forEach((show) => {
+          const genreTitle = mapGenreIdToTitle(show.genre_id);
+          if (!groupedShows[genreTitle]) {
+            groupedShows[genreTitle] = [];
+          }
+          groupedShows[genreTitle].push(show);
+        });
+        return groupedShows;
+      };
+
+      // Filtered and grouped shows by genre
+      const groupedShows = groupShowsByGenre(limitedShows);
 
       try {
         const response = await fetch('https://podcast-api.netlify.app/shows');
@@ -71,67 +84,52 @@ function ShowsList() {
     };
 
     fetchData();
-
     setShowCount(calculateInitialShowCount());
   }, []);
 
   const calculateInitialShowCount = () => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth >= 1200) {
-      return 21;
-    } else if (screenWidth >= 600) {
-      return 7;
-    } else {
-      return 2;
-    }
+    if (screenWidth >= 1200) return 21;
+    if (screenWidth >= 600) return 7;
+    return 2;
   };
 
   useEffect(() => {
-    const initialShowCount = calculateInitialShowCount();
-    console.log('Initial show count:', initialShowCount);
-    setShowCount(initialShowCount);
+    setShowCount(calculateInitialShowCount());
   }, []);
 
-  // Limit the number of items to be displayed
   const limitedShows = shows.slice(0, showCount);
 
   const handleShowMore = () => {
-    console.log('Show more clicked');
     setShowCount(
       (prevShowCount) => prevShowCount + calculateInitialShowCount()
     );
   };
 
-  // const limitedShows = shows.slice(0, calculateShowCount());
-
   return (
-    <React.Fragment>
+    <>
       <Container maxWidth="xl">
-        <Grid item xs={4} className="shows-container" justifyContent="center">
+        <Grid container spacing={2} justifyContent="center">
           {loading ? (
             <Skeleton variant="rectangular" width={200} height={100} />
           ) : (
-            <>
-              {limitedShows.map((show) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={show.id}>
-                  {/* Pass the imageLoaded prop and the setImageLoaded callback */}
-                  <MainImageCard
-                    show={show}
-                    imageLoaded={imageLoaded}
-                    onImageLoad={() => setImageLoaded(true)}
-                  />
-                </Grid>
-              ))}
-            </>
+            limitedShows.map((show) => (
+              <Grid item xs={12} sm={6} md={4} lg={2} key={show.id}>
+                <MainImageCard
+                  show={show}
+                  imageLoaded={imageLoaded}
+                  onImageLoad={() => setImageLoaded(true)}
+                />
+              </Grid>
+            ))
           )}
         </Grid>
-      </Container>{' '}
+      </Container>
       {showCount < shows.length && (
-        // Call handleShowMore wherever you want to load more shows
         <button onClick={handleShowMore}>Show More</button>
       )}
-    </React.Fragment>
+    </>
   );
 }
 

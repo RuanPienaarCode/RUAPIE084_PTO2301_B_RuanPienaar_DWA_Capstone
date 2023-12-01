@@ -1,0 +1,168 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-y: auto;
+}
+
+main {
+  flex: 1;
+}
+
+.shows-container {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-box {
+  padding-bottom: 200px;
+}
+
+.nav {
+  height: 100%;
+  background-color: #6e40c9;
+  position: relative;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav > .nav-header > .nav-title {
+  display: flex;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav > .nav-links {
+  display: flex;
+  align-items: center;
+  float: right;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px;
+  text-decoration: none;
+  color: #efefef;
+}
+
+.nav > .nav-links > a:hover {
+  opacity: 0.8;
+  transition: 0.15s;
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+
+  .nav > .nav-btn > label:hover,
+  .nav #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(11, 255, 97, 0.3);
+  }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid rgb(238, 238, 238);
+  }
+
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #29af82;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+
+.menu {
+  position: relative;
+}
+
+.list {
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 40px;
+  background-color: #16966c;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 3px;
+  color: #4e4c4c;
+}
+
+.list > a {
+  padding: 5px 20px;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #fff;
+}
+
+.list.active {
+  display: flex;
+}
+
+.audio-player {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}

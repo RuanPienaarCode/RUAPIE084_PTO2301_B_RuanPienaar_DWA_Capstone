@@ -1,12 +1,12 @@
+// src/pages/home.jsx
 import Navbar from '../components/Navbar';
 import React, { useEffect } from 'react';
-import { supabase } from '../supabase/SupabaseClient';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { GithubLogin } from '../store/authSlice';
 import ShowsList from '/src/components/ShowsList';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import AudioPlayer from '/src/components/AudioPlayer';
 import TransitionsModal from '../components/ShowDetailsModal';
 
 export default function Home() {

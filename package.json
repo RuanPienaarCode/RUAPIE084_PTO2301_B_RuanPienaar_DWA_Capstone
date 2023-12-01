@@ -34,7 +34,7 @@
     "@emotion/styled": "^11.11.0",
     "@floating-ui/dom": "^1.5.3",
     "@fontsource/roboto": "^5.0.8",
-    "@mui/icons-material": "^5.14.18",
+    "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.18",
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "@reduxjs/toolkit": "^1.9.1",
