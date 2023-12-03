@@ -67,15 +67,29 @@ export default function App() {
       </Slide>
     );
   }
-  const Player = ({ episode }) => <AudioPlayer url={episode?.file} className="custom-audio-player" />;
+  const Player = ({ episode }) => (
+    <AudioPlayer url={episode?.file} className="custom-audio-player" />
+  );
   console.log();
 
   return (
     <div className={`app ${mode}`}>
       <header>
         <Container maxWidth="xl">
-          <AppBar position="static" className="navbar" sx={{ borderRadius: 0, marginBottom: 5, display: 'flex', justifyContent: 'space-between' }}>
-            <Toolbar className="toolbar" sx={{ display: 'flex', alignItems: 'center' }}>
+          <AppBar
+            position="static"
+            className="navbar"
+            sx={{
+              borderRadius: 0,
+              marginBottom: 5,
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Toolbar
+              className="toolbar"
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
               <NavLink to="/login">
                 <Typography
                   variant="h6"
@@ -119,7 +133,11 @@ export default function App() {
                 >
                   Login
                 </Typography>
-                <Button variant="outlined" onClick={() => logout()} sx={{ backgroundColor: '#fff' }}>
+                <Button
+                  variant="outlined"
+                  onClick={() => logout()}
+                  sx={{ backgroundColor: '#fff' }}
+                >
                   Logout
                 </Button>
               </NavLink>
@@ -130,12 +148,25 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login user={user} setUser={setUser} />} />
-          <Route path="/success" element={<Success user={user} setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={<Login user={user} setUser={setUser} />}
+          />
+          <Route
+            path="/success"
+            element={<Success user={user} setUser={setUser} />}
+          />
           <Route
             path="/home"
             element={
-              <Home user={user} allPodcastData={PodcastData} setPodcastData={setPodcastData} setUser={setUser} setEpisode={setEpisode} episode={episode} />
+              <Home
+                user={user}
+                allPodcastData={PodcastData}
+                setPodcastData={setPodcastData}
+                setUser={setUser}
+                setEpisode={setEpisode}
+                episode={episode}
+              />
             }
           />
           <Route path="/likes/:id" component={Likes} />

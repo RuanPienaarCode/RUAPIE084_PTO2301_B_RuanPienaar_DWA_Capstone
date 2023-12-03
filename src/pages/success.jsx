@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import logo from '../assets/bolt.png';
 
-import getUserData from '../components/getUserData.js';
+import getUserData from '../components/getUserData';
 
 import getSupabase from '../assets/api';
 

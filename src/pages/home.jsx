@@ -7,7 +7,7 @@ import Likes from '../components/Likes.jsx';
 import Search from '../components/search';
 // import PodcastCarousel from '../components/carousel';
 import Carousel from '../components/carousel';
-import getUserData from '../components/getUserData.js';
+import getUserData from '../components/getUserData.jsx';
 import AudioPlayer from '../components/AudioPlayer.jsx';
 import getSupabase from '../assets/api';
 import '../styles/App.css';
