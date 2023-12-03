@@ -1,66 +1,81 @@
-import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
-// import {
-//   // Import predefined theme
-//   ThemeSupa,
-// } from '@supabase/auth-ui-shared';
+import { useEffect } from 'react';
+import { Button, Container, Typography, Box, Stack } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
-// // import Header from '../components/header';
 
-// const supabase = createClient(
-//   'https://luspkgilingfnlvmjers.supabase.co',
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1c3BrZ2lsaW5nZm5sdm1qZXJzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5OTM5MDIwNywiZXhwIjoyMDE0OTY2MjA3fQ.Q39xLVAbeq5zkcmugmujZu6YchN1TpB4q7imf0hOy9A'
-// );
+import logo from '../assets/bolt.png';
 
-function SuccessAuth() {
-  const [user, setUser] = useState({});
+import getUserData from '../components/getUserData.js';
+
+import getSupabase from '../assets/api';
+
+const supabase = getSupabase();
+
+export default function Success(props) {
   const navigate = useNavigate();
+  const { user, setUser } = props;
 
   useEffect(() => {
-    async function getUserData() {
-      await supabase.auth.getUser().then((value) => {
-        if (value.data?.user) {
-          console.log(value.data.user);
-          setUser(value.data.user);
-        }
-      });
-    }
-    getUserData();
+    getUserData(setUser);
   }, []);
 
-  async function signOutUser() {
-    const { error } = await supabase.auth.signOut();
-    if (!error) {
-      navigate('/');
-    } else {
+  async function logout() {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Error during logout:', error);
+      }
       navigate('/login');
+    } catch (error) {
+      console.error('Error during logout:', error);
     }
   }
 
   return (
-    <div className="success">
-      <header className="App-header">
-        {user ? (
-          <>
-            <h1>Success</h1>
-            <button onClick={() => signOutUser()}>Sign Out</button>
-          </>
-        ) : (
-          <>
-            <h1>User Not logged in</h1>
-            <button
-              onClick={() => {
-                navigate('/login');
-              }}
-            >
-              Login
-            </button>
-          </>
-        )}
-      </header>
-    </div>
+    <Box
+      sx={{
+        pt: 8,
+        pb: 6,
+      }}
+    >
+      <Container>
+        <h2>Welcome, {user.user_metadata.full_name} !</h2>
+
+        <img
+          src={user.user_metadata.avatar_url}
+          alt="Avatar"
+          style={{ borderRadius: '50%', maxWidth: '100%', height: 'auto' }}
+        ></img>
+
+        <img
+          className="logo"
+          src={logo}
+          alt="Devcast Logo"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
+        <Typography variant="h6" align="center" paragraph>
+          Join me, Blake Foster (aka BLAFOS090), as we embark on a journey
+          through the latest in technology and software development. As part of
+          PTO2301-B at CodeSpace, this podcast app serves as the capstone
+          project for the Software Development Bootcamp. Together, let's explore
+          the cutting-edge world of React and navigate the dynamic landscape of
+          coding.
+        </Typography>
+
+        <Stack
+          sx={{ pt: 4 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+        >
+          <Button variant="Outlined" onClick={() => logout()}>
+            Logout
+          </Button>
+          <Button variant="Contained" onClick={() => navigate('/Home')}>
+            Home
+          </Button>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
-
-export default SuccessAuth;
