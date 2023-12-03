@@ -30,7 +30,7 @@ Podspace is designed to provide a seamless music listening experience with featu
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/RuanPienaarCode/podspace.git
+   git clone https://github.com/RuanPienaarCode/RUAPIE084_PTO2301_B_RuanPienaar_DWA_Capstone.git
    ```
 
 2. Install dependencies:
