@@ -1,58 +1,44 @@
 // src/main.jsx
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { store } from './store/store.js';
-import { Provider } from 'react-redux';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import { themeOptions } from './styles/theme';
+import { createBrowserRouter, RouterProvider, Routes, Route } from 'react-router-dom';
 
+import './styles/App.css';
+
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
 import Success from './pages/Success';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#5C469C',
-    },
-    secondary: {
-      main: '#ffffff',
-    },
-    tertiary: {
-      main: '#1D267D',
-    },
-    quaternary: {
-      main: '#D4ADFC',
-    },
+import App from './App';
+
+import Copyright from '../src/components/Copyright';
+
+import theme from './themeColour';
+
+<theme />;
+
+export const router = createBrowserRouter([
+  {
+    path: '/*',
+    element: <App />,
+    children: [
+      { path: '', element: <Landing /> },
+      { path: 'home', element: <Home /> },
+      { path: 'login', element: <Login /> },
+      { path: 'success', element: <Success /> },
+      { path: '*', element: <ErrorPage /> },
+    ],
   },
-});
+]);
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
-
-const AppRouter = () => (
-  <Routes>
-    <Route path="login" element={<Login />} />
-    <Route path="success" element={<Success />} />
-    <Route path="/" element={<Home />} />
-  </Routes>
-);
-
-root.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Router>
-        <Provider store={store}>
-          <CssBaseline />
-          <AppRouter />
-        </Provider>
-      </Router>
+      <RouterProvider router={router} />
+      <Copyright sx={{ mt: 2 }} />
     </ThemeProvider>
   </React.StrictMode>
 );
