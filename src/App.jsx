@@ -17,7 +17,7 @@ import getSupabase from './assets/fetchSupa';
 import { Navigate } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Success from './pages/Success';
+import Success from './pages/success';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
