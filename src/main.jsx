@@ -15,7 +15,7 @@ import Landing from './pages/Landing';
 import Login from './pages/login';
 import Home from './pages/home';
 import ErrorPage from './pages/ErrorPage';
-import Success from './pages/Success';
+import Success from './pages/success';
 
 import App from './App';
 
