@@ -31,9 +31,9 @@
     "react-multi-carousel": "^2.8.4",
     "react-player": "^2.13.0",
     "react-router-dom": "^6.19.0",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "sort-by": "^0.0.2",
-    "update": "^0.4.2"
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
