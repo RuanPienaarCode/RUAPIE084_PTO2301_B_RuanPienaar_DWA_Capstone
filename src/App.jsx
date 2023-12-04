@@ -18,7 +18,7 @@ import { Navigate } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Success from './pages/success';
-import Login from './pages/Login';
+import Login from './pages/LoginPage';
 import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
 import Likes from './components/Likes';

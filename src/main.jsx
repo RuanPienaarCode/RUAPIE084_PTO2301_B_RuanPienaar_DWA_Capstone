@@ -12,7 +12,7 @@ import {
 import './styles/App.css';
 
 import Landing from './pages/Landing';
-import Login from './pages/Login';
+import Login from './pages/LoginPage';
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import Success from './pages/success';
