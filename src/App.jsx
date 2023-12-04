@@ -12,7 +12,7 @@ import { Slide, useScrollTrigger } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import getSupabase from './assets/fetchSupa.js';
+import getSupabase from './assets/fetchSupa.jsx';
 
 import { Navigate } from 'react-router-dom';
 
