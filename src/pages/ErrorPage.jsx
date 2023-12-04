@@ -1,6 +1,6 @@
 import { useRouteError } from 'react-router-dom';
 import { Button } from '@mui/material';
-import '../styles/app.css';
+import '../styles/App.css';
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -11,7 +11,11 @@ export default function ErrorPage() {
       <h1>Oops!</h1>
       <p>Unexpected error has occurred.</p>
       <p>
-        <i>{error && error.statusText ? error.statusText : error && error.message}</i>
+        <i>
+          {error && error.statusText
+            ? error.statusText
+            : error && error.message}
+        </i>
       </p>
       <Button
         onClick={() => {
