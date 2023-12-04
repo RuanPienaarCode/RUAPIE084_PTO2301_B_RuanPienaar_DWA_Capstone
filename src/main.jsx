@@ -5,15 +5,13 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {
   createBrowserRouter,
   RouterProvider,
-  Routes,
-  Route,
 } from 'react-router-dom';
 
 import './styles/App.css';
 
 import Landing from './pages/Landing';
 import Login from './pages/LoginPage';
-import Home from './pages/Home';
+import Home from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import Success from './pages/success';
 
