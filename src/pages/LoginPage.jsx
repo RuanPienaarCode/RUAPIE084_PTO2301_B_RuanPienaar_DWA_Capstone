@@ -10,12 +10,15 @@ import { useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 import getUserData from '../components/getUserData';
 
 import getSupabase from '../assets/api';
 
 import logo from '../assets/bolt.png';
+import Banner from '../assets/PodspaceBanner.png';
 
 const supabase = getSupabase();
 
@@ -51,13 +54,17 @@ export default function Login(props) {
   }, []);
 
   return (
-    <div className="login-page">
+    <Box className="login-page" style={{ maxWidth: '550px' }}>
       <img
-        className="logo"
-        src={logo}
-        alt="Bolt Logo"
+        className="Banner"
+        src={Banner}
+        alt="Bolt Banner"
         style={{ maxWidth: '550px', height: 'auto' }}
       />
+      <Typography>
+        <h1>Login</h1>
+      </Typography>
+
       <Auth
         supabaseClient={supabase}
         providers={['discord', 'github']}
@@ -69,6 +76,6 @@ export default function Login(props) {
       <button onClick={() => navigate('/success')} aria-label="Go to Success">
         Go to Success
       </button>
-    </div>
+    </Box>
   );
 }

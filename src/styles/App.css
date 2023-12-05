@@ -67,9 +67,9 @@ body {
 
 /* Login Page Styles */
 .login-page {
-  width: 100vw;
+  width: 550px;
   max-width: 1200px;
-  padding: 5%;
+  padding: 0%;
   margin: 0 auto;
 }
 
@@ -177,11 +177,15 @@ button:focus-visible {
     color: #390099;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #303030;
   }
 }
 
 #error-page {
   margin: 50px auto !important;
+  text-align: center;
+}
+
+.SuccessContainer {
   text-align: center;
 }

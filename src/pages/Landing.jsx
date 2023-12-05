@@ -12,7 +12,7 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/bolt.png';
-
+import Banner from '../assets/PodspaceBanner.png';
 import Carousel from '../components/carousel';
 
 export default function Landing() {
@@ -29,10 +29,20 @@ export default function Landing() {
       }}
     >
       <Container maxWidth="maxWidth">
-        <Typography component="h1" variant="h3" align="center" color="primary"></Typography>
+        <Typography
+          component="h1"
+          variant="h3"
+          align="center"
+          color="primary"
+        ></Typography>
 
         <Carousel />
-        <Stack sx={{ pt: 1, mb: 2 }} direction="row" spacing={2} justifyContent="center">
+        <Stack
+          sx={{ pt: 1, mb: 2 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+        >
           <Link to="/login">
             <Button variant="contained">Login</Button>
           </Link>
@@ -40,6 +50,12 @@ export default function Landing() {
             <Button variant="outlined">Sign Up</Button>
           </Link>
         </Stack>
+        <img
+          className="Banner"
+          src={Banner}
+          alt="Bolt Banner"
+          style={{ maxWidth: '550px', height: 'auto' }}
+        />
       </Container>
     </Box>
   );
