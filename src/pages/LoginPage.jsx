@@ -56,7 +56,7 @@ export default function Login(props) {
         className="logo"
         src={logo}
         alt="Bolt Logo"
-        style={{ maxWidth: '100%', height: 'auto' }}
+        style={{ maxWidth: '550px', height: 'auto' }}
       />
       <Auth
         supabaseClient={supabase}
