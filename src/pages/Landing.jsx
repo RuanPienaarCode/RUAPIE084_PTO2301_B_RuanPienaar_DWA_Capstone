@@ -1,9 +1,3 @@
-/**
- * Renders the Landing component.
- *
- * @return {JSX.Element} The rendered Landing component.
- */
-
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -28,15 +22,18 @@ export default function Landing() {
         textAlign: 'center', // Center the content horizontally
       }}
     >
-      <Container maxWidth="maxWidth">
+      <Container maxWidth="md">
         <Typography
           component="h1"
           variant="h3"
           align="center"
-          color="primary"
-        ></Typography>
+          color="secondary"
+        >
+          Podspace
+        </Typography>
 
         <Carousel />
+
         <Stack
           sx={{ pt: 1, mb: 2 }}
           direction="row"
@@ -50,11 +47,12 @@ export default function Landing() {
             <Button variant="outlined">Sign Up</Button>
           </Link>
         </Stack>
+
         <img
           className="Banner"
           src={Banner}
           alt="Bolt Banner"
-          style={{ maxWidth: '550px', height: 'auto' }}
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
       </Container>
     </Box>

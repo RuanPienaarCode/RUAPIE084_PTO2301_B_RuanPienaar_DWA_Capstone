@@ -24,13 +24,11 @@
 }
 
 /* Root Styles */
+/* Root Styles */
 body {
   display: block;
-  min-width: 1200px;
   min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  margin: 0px auto;
+  margin: 0;
 }
 .navbar2 {
   color: var(--secondary-text);
@@ -67,9 +65,10 @@ body {
 
 /* Login Page Styles */
 .login-page {
-  width: 550px;
-  max-width: 1200px;
-  padding: 0%;
+  width: 100%;
+  max-width: 100%;
+  padding: 5%;
+  box-sizing: border-box;
   margin: 0 auto;
 }
 
@@ -102,6 +101,21 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0px;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .nav-link {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 
