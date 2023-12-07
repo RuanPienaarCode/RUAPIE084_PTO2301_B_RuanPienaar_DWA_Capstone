@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 
 import getUserData from '../components/getUserData';
 
-import getSupabase from '../assets/api';
+import getSupabase from '../assets/SupaAPI';
 
 import logo from '../assets/bolt.png';
 import Banner from '../assets/PodspaceBanner.png';

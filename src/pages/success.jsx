@@ -7,7 +7,7 @@ import logo from '../assets/bolt.png';
 
 import getUserData from '../components/getUserData';
 
-import getSupabase from '../assets/api';
+import getSupabase from '../assets/fetchSupa';
 
 const supabase = getSupabase();
 

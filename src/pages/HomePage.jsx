@@ -8,7 +8,7 @@ import Search from '../components/search';
 import Carousel from '../components/carousel';
 import getUserData from '../components/getUserData';
 import AudioPlayer from '../components/AudioPlayer';
-import getSupabase from '../assets/api';
+import getSupabase from '../assets/fetchSupa';
 import '../styles/App.css';
 
 Home.propTypes = {

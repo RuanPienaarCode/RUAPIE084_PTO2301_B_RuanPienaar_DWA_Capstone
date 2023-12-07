@@ -1,7 +1,5 @@
 // src/components/AudioPlayer.jsx
 import React from 'react';
-import QueueMusicIcon from '@mui/icons-material/QueueMusic';
-import ReactAudioPlayer from 'react-audio-player';
 
 import ReactPlayer from 'react-player';
 

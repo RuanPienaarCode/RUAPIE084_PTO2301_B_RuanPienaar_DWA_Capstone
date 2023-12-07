@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import getSupabase from '../assets/api';
+import getSupabase from '../assets/SupaAPI';
 
 const supabase = getSupabase();
 

@@ -1,11 +1,15 @@
 // src/assets/fetchSupa.js
-import getSupabase from '../assets/api';
+import getSupabase from '../assets/SupaAPI';
 
 const supabase = getSupabase();
 
 const fetchPodcastData = async (podcastId) => {
   try {
-    const { data, error } = await supabase.from('podcasts').select('*').eq('id', podcastId).single();
+    const { data, error } = await supabase
+      .from('podcasts')
+      .select('*')
+      .eq('id', podcastId)
+      .single();
 
     if (error) {
       console.error('Error fetching podcast data:', error.message);

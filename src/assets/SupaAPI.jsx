@@ -1,4 +1,4 @@
-// api.js
+// SupaAPI.js
 import { createClient } from '@supabase/supabase-js';
 
 export default function getSupabase() {

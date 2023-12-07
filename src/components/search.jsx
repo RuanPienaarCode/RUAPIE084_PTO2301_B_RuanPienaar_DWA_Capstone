@@ -1,20 +1,20 @@
-/**
- * Renders a search component with search functionality and filter options.
- *
- * @param {object} props - The properties passed to the Search component.
- * @param {array} props.allPodcastData - An array of podcast data.
- * @param {function} props.setSelectedPodcast - A function to set the selected podcast.
- * @param {boolean} props.loading - A boolean indicating whether the component is loading.
- * @param {function} props.setLoading - A function to set the loading state.
- * @return {JSX.Element} The rendered Search component.
- */
-
 import Fuse from 'fuse.js';
 import { useState, useEffect, useMemo } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import TextField from '@mui/material/TextField';
-import { Card, Box, Button, Typography, Grid, Chip, Collapse, Select, MenuItem, Paper } from '@mui/material';
+import {
+  Card,
+  Box,
+  Button,
+  Typography,
+  Grid,
+  Chip,
+  Collapse,
+  Select,
+  MenuItem,
+  Paper,
+} from '@mui/material';
 
 import genres from '../assets/genres';
 
@@ -46,27 +46,37 @@ export default function Search(props) {
   const handleSort = (option) => {
     setSortOption(option);
 
-    // Handle sorting based on the selected option
-    const sortedResults = [...results]; // Create a copy to avoid mutating the original array
+    // Check if there are results before sorting
+    if (results.length > 0) {
+      const sortedResults = [...results];
 
-    switch (option) {
-      case 'titleAsc':
-        sortedResults.sort((a, b) => a.item.title.localeCompare(b.item.title));
-        break;
-      case 'titleDesc':
-        sortedResults.sort((a, b) => b.item.title.localeCompare(a.item.title));
-        break;
-      case 'dateAsc':
-        sortedResults.sort((a, b) => new Date(a.item.updated) - new Date(b.item.updated));
-        break;
-      case 'dateDesc':
-        sortedResults.sort((a, b) => new Date(b.item.updated) - new Date(a.item.updated));
-        break;
-      default:
-        break;
+      switch (option) {
+        case 'titleAsc':
+          sortedResults.sort((a, b) =>
+            a.item.title.localeCompare(b.item.title)
+          );
+          break;
+        case 'titleDesc':
+          sortedResults.sort((a, b) =>
+            b.item.title.localeCompare(a.item.title)
+          );
+          break;
+        case 'dateAsc':
+          sortedResults.sort(
+            (a, b) => new Date(a.item.updated) - new Date(b.item.updated)
+          );
+          break;
+        case 'dateDesc':
+          sortedResults.sort(
+            (a, b) => new Date(b.item.updated) - new Date(a.item.updated)
+          );
+          break;
+        default:
+          break;
+      }
+
+      setResults(sortedResults);
     }
-
-    setResults(sortedResults);
   };
 
   useEffect(() => {
@@ -75,7 +85,7 @@ export default function Search(props) {
 
       try {
         if (allPodcastData && searchTerm.trim() !== '') {
-          const filteredResults = fuse.search(searchTerm);
+          const filteredResults = await fuse.search(searchTerm);
           setResults(filteredResults);
           console.log(`Search results:`, filteredResults);
         } else {
@@ -140,10 +150,22 @@ export default function Search(props) {
           <img src={item.image} alt={item.title} width="100%" />
           <Paper sx={{ padding: '15px' }}>
             <Typography variant="h6">{item.title}</Typography>
-            <Typography variant="body2">{item.description.length > 100 ? `${item.description.slice(0, 100)}...` : item.description}</Typography>
-            <Chip label={`Seasons: ${item.seasons}`} className="seasons" color="primary" />
+            <Typography variant="body2">
+              {item.description.length > 100
+                ? `${item.description.slice(0, 100)}...`
+                : item.description}
+            </Typography>
+            <Chip
+              label={`Seasons: ${item.seasons}`}
+              className="seasons"
+              color="primary"
+            />
 
-            <Chip label={`Genre: ${genres[item.genres]}`} className="genre" color="default" />
+            <Chip
+              label={`Genre: ${genres[item.genres]}`}
+              className="genre"
+              color="default"
+            />
             <p>Last Upload:</p>
             <Chip
               variant="filled"
@@ -174,9 +196,15 @@ export default function Search(props) {
     </Grid>
   );
 
-  const cardsGrid = cardGrid(results.map((result) => <PodcastCard key={result.item.id} item={result.item} />));
+  const cardsGrid = cardGrid(
+    results.map((result) => (
+      <PodcastCard key={result.item.id} item={result.item} />
+    ))
+  );
 
-  const allCardsGrid = cardGrid(allPodcastData.map((item) => <PodcastCard key={item.id} item={item} />));
+  const allCardsGrid = cardGrid(
+    allPodcastData.map((item) => <PodcastCard key={item.id} item={item} />)
+  );
 
   return (
     <Box
@@ -231,7 +259,12 @@ export default function Search(props) {
           <Typography variant="h6" sx={{ color: '#fff' }}>
             Sort by:
           </Typography>
-          <Select value={sortOption} onChange={(e) => handleSort(e.target.value)} variant="standard" sx={{ width: '100px', backgroundColor: '#f5f5f5' }}>
+          <Select
+            value={sortOption}
+            onChange={(e) => handleSort(e.target.value)}
+            variant="standard"
+            sx={{ width: '100px', backgroundColor: '#f5f5f5' }}
+          >
             <MenuItem value="titleAsc">A-Z</MenuItem>
             <MenuItem value="titleDesc">Z-A</MenuItem>
           </Select>
@@ -248,12 +281,24 @@ export default function Search(props) {
               </MenuItem>
             ))}
           </Select>
-          <Button sx={{ m: 3 }} variant="contained" onClick={handleSearchButtonClick}>
+          <Button
+            sx={{ m: 3 }}
+            variant="contained"
+            onClick={handleSearchButtonClick}
+          >
             Search
           </Button>
         </Box>
 
-        {loading ? <p>Loading...</p> : error ? <p>{error}</p> : searchTerm.trim() !== '' ? cardsGrid : allCardsGrid}
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : searchTerm.trim() !== '' ? (
+          cardsGrid
+        ) : (
+          allCardsGrid
+        )}
       </Collapse>
     </Box>
   );
