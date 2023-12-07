@@ -21,7 +21,7 @@ import Success from './pages/success';
 import Login from './pages/LoginPage';
 import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
-import Likes from './components/Likes';
+import TestPage from './pages/TestPage';
 
 import AudioPlayer from './components/AudioPlayer';
 
@@ -169,37 +169,30 @@ export default function App() {
               />
             }
           />
-          <Route path="/likes/:id" component={Likes} />
+          <Route path="test" element={<TestPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 
-        <footer>
-          <HideOnScroll>
-            <AppBar
-              position="fixed"
-              className="bottom-navbar"
+        <footer
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '100px',
+          }}
+        >
+          <Toolbar className="bottom-toolbar">
+            <AudioPlayer
+              url={episode?.file}
               sx={{
-                borderRadius: 0,
-                zIndex: 1,
-                top: 'auto',
-                bottom: 0,
-                maxHeight: 650,
-                backgroundColor: '#242424',
+                fontFamily: 'monospace',
+                width: '100%',
               }}
-            >
-              <Toolbar className="bottom-toolbar">
-                <AudioPlayer
-                  url={episode?.file}
-                  sx={{
-                    fontFamily: 'monospace',
-                    width: '100%',
-                  }}
-                />
-                {/* <ReactPlayer url={episode?.file} className="custom-audio-player" /> */}
-                {/* <Player episode={episode} /> */}
-              </Toolbar>
-            </AppBar>
-          </HideOnScroll>
+            />
+            {/* <ReactPlayer url={episode?.file} className="custom-audio-player" /> */}
+            {/* <Player episode={episode} /> */}
+          </Toolbar>
         </footer>
       </main>
     </div>

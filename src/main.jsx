@@ -10,6 +10,8 @@ import Landing from './pages/Landing';
 import Login from './pages/LoginPage';
 import Home from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
+import TestPage from './pages/TestPage';
+
 import Success from './pages/success';
 
 import App from './App';
@@ -29,6 +31,7 @@ export const router = createBrowserRouter([
       { path: 'home', element: <Home /> },
       { path: 'login', element: <Login /> },
       { path: 'success', element: <Success /> },
+      { path: 'test', element: <TestPage /> },
       { path: '*', element: <ErrorPage /> },
     ],
   },

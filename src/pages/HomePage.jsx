@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Box, Typography, Button, Paper } from '@mui/material';
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
-import Likes from '../components/Likes.jsx';
 import Search from '../components/search';
 // import PodcastCarousel from '../components/carousel';
 import Carousel from '../components/carousel';
@@ -94,24 +93,26 @@ export default function Home(props) {
           </Box>
           <Box
             className="navbar2"
-            sx={{
-              display: 'flex',
-              flexGrow: 1,
-              p: 3,
-              backgroundColor: 'secondary',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+            sx={
+              {
+                // display: 'flex',
+                // flexGrow: 1,
+                // p: 3,
+                // backgroundColor: 'secondary',
+                // justifyContent: 'center',
+                // alignItems: 'center',
+              }
+            }
           ></Box>
 
           <AudioPlayer
-            episode={episode}
-            selectedPodcast={selectedPodcast}
-            setSelectedPodcast={setSelectedPodcast}
-            setEpisode={setEpisode}
-            podcastData={allPodcastData}
-            loading={loading}
-            setLoading={setLoading}
+          // episode={episode}
+          // selectedPodcast={selectedPodcast}
+          // setSelectedPodcast={setSelectedPodcast}
+          // setEpisode={setEpisode}
+          // podcastData={allPodcastData}
+          // loading={loading}
+          // setLoading={setLoading}
           />
           <Box className="search-box">
             <Paper sx={{ backgroundColor: '#242424' }}>

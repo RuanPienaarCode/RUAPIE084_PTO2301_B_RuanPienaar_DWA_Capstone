@@ -1,8 +1,9 @@
 // src/components/AudioPlayer.jsx
 import React from 'react';
-import ReactPlayer from 'react-player';
-import IconButton from '@mui/material/IconButton';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import ReactAudioPlayer from 'react-audio-player';
+
+import ReactPlayer from 'react-player';
 
 const AudioPlayer = ({ episode }) => {
   const style = {
@@ -15,14 +16,10 @@ const AudioPlayer = ({ episode }) => {
 
   return (
     <div className="audio-player">
-      {episode && (
-        <>
-          <ReactPlayer url={episode.file} controls width="50%" height="50px" />
-          <IconButton aria-label="add to favorites" style={{ color: 'white' }}>
-            <QueueMusicIcon />
-          </IconButton>
-        </>
-      )}
+      <ReactPlayer
+        url="${process.env.PUBLIC_URL}/assets/test-mp3.mp3"
+        controls
+      />
     </div>
   );
 };
