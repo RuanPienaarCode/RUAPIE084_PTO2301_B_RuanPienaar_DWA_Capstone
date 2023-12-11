@@ -1,10 +1,10 @@
 /*  src/styles/App.css */
 :root {
-  --primary-bg: #390099;
+  --primary-bg: #00990a;
   --primary-text: #fff;
   --secondary-bg: #2d3142;
   --secondary-text: #242424;
-  --tertiary-bg: #8338ec;
+  --tertiary-bg: #38ecec;
   --quaternary-bg: #ffbd00;
 
   font-family: Inter, system-ui, system-ui, -apple-system, BlinkMacSystemFont,
@@ -104,6 +104,11 @@ body {
   }
 }
 
+audio {
+  width: 100%;
+  height: 45px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
@@ -116,6 +121,46 @@ body {
   .nav-link {
     width: 100%;
     margin-bottom: 10px;
+  }
+}
+
+.SeasonDiv {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.EpisodeSection {
+  margin: 5px;
+  border: 1px solid white;
+}
+/* Add this CSS to your stylesheet or in your component */
+
+.ShowCard {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  max-width: 400px;
+  width: 30%; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
+}
+.ShowCard img {
+  max-width: 100%;
+}
+
+.PodcastGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+  .PodcastGrid {
+    flex-direction: column; /* Stack cards vertically on small screens */
+  }
+
+  .ShowCard {
+    width: 100%; /* Full width for cards on small screens */
   }
 }
 
@@ -161,7 +206,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #eff0ff;
 }
 
 button:focus,
@@ -175,7 +220,7 @@ button:focus-visible {
     background-color: #303030;
   }
   a:hover {
-    color: #390099;
+    color: #e2d4f9;
   }
   button {
     background-color: #f9f9f9;
@@ -188,10 +233,10 @@ button:focus-visible {
     background-color: #303030;
   }
   a:hover {
-    color: #390099;
+    color: #c9acfa;
   }
   button {
-    background-color: #303030;
+    background-color: #000000;
   }
 }
 

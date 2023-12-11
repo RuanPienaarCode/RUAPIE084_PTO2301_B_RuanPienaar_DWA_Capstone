@@ -85,7 +85,15 @@ export default function Search(props) {
 
       try {
         if (allPodcastData && searchTerm.trim() !== '') {
-          const filteredResults = await fuse.search(searchTerm);
+          let filteredResults = fuse.search(searchTerm);
+
+          // Filter by selected genre
+          if (selectedGenre) {
+            filteredResults = filteredResults.filter((result) =>
+              result.item.genres.includes(selectedGenre)
+            );
+          }
+
           setResults(filteredResults);
           console.log(`Search results:`, filteredResults);
         } else {
@@ -100,7 +108,7 @@ export default function Search(props) {
     };
 
     handleSearch();
-  }, [allPodcastData, searchTerm, fuse, setLoading]);
+  }, [allPodcastData, searchTerm, selectedGenre, fuse, setLoading]);
 
   const fetchPodcastData = (id) => {
     setLoading(true);
@@ -146,7 +154,6 @@ export default function Search(props) {
             padding: '0px',
           }}
         >
-          <Box></Box>
           <img src={item.image} alt={item.title} width="100%" />
           <Paper sx={{ padding: '15px' }}>
             <Typography variant="h6">{item.title}</Typography>

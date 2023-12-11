@@ -1,12 +1,8 @@
 import { useEffect } from 'react';
 import { Button, Container, Typography, Box, Stack } from '@mui/material';
-
 import { useNavigate } from 'react-router-dom';
-
 import logo from '../assets/bolt.png';
-
 import getUserData from '../components/getUserData';
-
 import getSupabase from '../assets/fetchSupa';
 
 const supabase = getSupabase();

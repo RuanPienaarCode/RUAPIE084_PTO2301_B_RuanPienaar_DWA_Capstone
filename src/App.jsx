@@ -22,17 +22,19 @@ import Login from './pages/LoginPage';
 import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
 import TestPage from './pages/TestPage';
-
-import AudioPlayer from './components/AudioPlayer';
-
+import Footer from './components/footer';
+import Copyright from '../src/components/Copyright';
 import './styles/App.css';
-import 'react-h5-audio-player/lib/styles.css';
 
 export default function App() {
   const [mode, setMode] = useState('light');
   const [PodcastData, setPodcastData] = useState([]);
   const [user, setUser] = useState(null);
   const [episode, setEpisode] = useState(null);
+  const [selectedEpisodeUrl, setSelectedEpisodeUrl] = useState(
+    '/public/test-mp3.mp3'
+  );
+
   const supabase = getSupabase();
 
   const toggleDarkMode = () => {
@@ -67,10 +69,11 @@ export default function App() {
       </Slide>
     );
   }
-  const Player = ({ episode }) => (
-    <AudioPlayer url={episode?.file} className="custom-audio-player" />
-  );
-  console.log();
+
+  const handleEpisodeClick = (episodeUrl) => {
+    console.log('Clicked on episode with URL:', episodeUrl);
+    setSelectedEpisodeUrl(episodeUrl);
+  };
 
   return (
     <div className={`app ${mode}`}>
@@ -166,35 +169,17 @@ export default function App() {
                 setUser={setUser}
                 setEpisode={setEpisode}
                 episode={episode}
+                selectedEpisodeUrl={selectedEpisodeUrl}
+                setSelectedEpisodeUrl={setSelectedEpisodeUrl}
               />
             }
           />
           <Route path="test" element={<TestPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-
-        <footer
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100%',
-            height: '100px',
-          }}
-        >
-          <Toolbar className="bottom-toolbar">
-            <AudioPlayer
-              url={episode?.file}
-              sx={{
-                fontFamily: 'monospace',
-                width: '100%',
-              }}
-            />
-            {/* <ReactPlayer url={episode?.file} className="custom-audio-player" /> */}
-            {/* <Player episode={episode} /> */}
-          </Toolbar>
-        </footer>
       </main>
+      <Footer selectedEpisodeUrl={selectedEpisodeUrl} />
+      <Copyright sx={{ mt: 2 }} />
     </div>
   );
 }

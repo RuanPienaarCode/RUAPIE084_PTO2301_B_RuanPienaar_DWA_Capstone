@@ -1,4 +1,4 @@
-// genres.jsx
+// assests/genres.jsx
 const genres = {
   1: 'Personal Growth',
   2: 'True Crime and Investigative Journalism',

@@ -58,7 +58,11 @@ function PodcastCarousel(props) {
       >
         {content.map((podcast, index) => (
           <div key={index}>
-            <img src={podcast.image} alt={podcast.title} style={{ borderRadius: '5px', width: '100%', height: 'auto' }} />
+            <img
+              src={podcast.image}
+              alt={podcast.title}
+              style={{ borderRadius: '5px', width: '100%', height: 'auto' }}
+            />
             <p>{podcast.title}</p>
           </div>
         ))}

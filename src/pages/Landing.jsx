@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
-
+import Footer from '../components/footer';
 import logo from '../assets/bolt.png';
 import Banner from '../assets/PodspaceBanner.png';
 import Carousel from '../components/carousel';

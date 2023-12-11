@@ -7,7 +7,6 @@ import Search from '../components/search';
 // import PodcastCarousel from '../components/carousel';
 import Carousel from '../components/carousel';
 import getUserData from '../components/getUserData';
-import AudioPlayer from '../components/AudioPlayer';
 import getSupabase from '../assets/fetchSupa';
 import '../styles/App.css';
 
@@ -78,59 +77,46 @@ export default function Home(props) {
         width: '100%',
       }}
     >
-      {user ? (
-        <div className="home">
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              width: '100vw',
-            }}
-          >
-            {/* <PodcastCarousel /> */}
-            <Carousel />
-          </Box>
-          <Box
-            className="navbar2"
-            sx={
-              {
-                // display: 'flex',
-                // flexGrow: 1,
-                // p: 3,
-                // backgroundColor: 'secondary',
-                // justifyContent: 'center',
-                // alignItems: 'center',
-              }
+      <div className="home">
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            width: '100vw',
+          }}
+        >
+          {/* <PodcastCarousel /> */}
+          <Carousel />
+        </Box>
+        <Box
+          className="navbar2"
+          sx={
+            {
+              // display: 'flex',
+              // flexGrow: 1,
+              // p: 3,
+              // backgroundColor: 'secondary',
+              // justifyContent: 'center',
+              // alignItems: 'center',
             }
-          ></Box>
+          }
+        ></Box>
 
-          <AudioPlayer
-          // episode={episode}
-          // selectedPodcast={selectedPodcast}
-          // setSelectedPodcast={setSelectedPodcast}
-          // setEpisode={setEpisode}
-          // podcastData={allPodcastData}
-          // loading={loading}
-          // setLoading={setLoading}
-          />
-          <Box className="search-box">
-            <Paper sx={{ backgroundColor: '#242424' }}>
-              <Search
-                allPodcastData={allPodcastData}
-                setLoading={setLoading}
-                loading={loading}
-                setEpisode={setEpisode}
-                selectedPodcast={selectedPodcast}
-                setSelectedPodcast={setSelectedPodcast}
-              />
-            </Paper>
-          </Box>
-          {error ? <Typography>{error}</Typography> : <div></div>}
-        </div>
-      ) : (
-        <p>Please log to start listening</p>
-      )}
+        <Box className="search-box">
+          <Paper sx={{ backgroundColor: '#242424' }}>
+            <Search
+              allPodcastData={allPodcastData}
+              setLoading={setLoading}
+              loading={loading}
+              setEpisode={setEpisode}
+              selectedPodcast={selectedPodcast}
+              setSelectedPodcast={setSelectedPodcast}
+            />
+          </Paper>
+        </Box>
+        {error ? <Typography>{error}</Typography> : <div></div>}
+      </div>
     </Box>
   );
 }

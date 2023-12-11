@@ -1,25 +1,27 @@
-// src/components/AudioPlayer.jsx
-import React from 'react';
-
+import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 
-const AudioPlayer = ({ episode }) => {
-  const style = {
-    position: 'fixed',
-    transform: 'translateX(-50%)', // Center the div horizontally
-    bottom: 0,
-    left: 0,
-    width: '96%',
-  };
+function AudioPlayer({ selectedEpisodeUrl }) {
+  if (!selectedEpisodeUrl) {
+    return <error>There was an error</error>;
+  }
+
+  // Hardcode the placeholder URL for testing
+  const hardcodedUrl = 'https://podcast-api.netlify.app/placeholder-audio.mp3';
 
   return (
-    <div className="audio-player">
-      <ReactPlayer
-        url="${process.env.PUBLIC_URL}/assets/test-mp3.mp3"
-        controls
-      />
-    </div>
+    <ReactPlayer
+      key={selectedEpisodeUrl}
+      url={hardcodedUrl} // Use the dynamic URL
+      controls
+      height={45}
+      width={'100%'}
+    />
   );
+}
+
+AudioPlayer.propTypes = {
+  selectedEpisodeUrl: PropTypes.string,
 };
 
 export default AudioPlayer;
