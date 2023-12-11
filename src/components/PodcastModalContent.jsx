@@ -14,6 +14,7 @@ const PodcastModalContent = ({
 }) => {
   const [selectedShowData, setSelectedShowData] = useState(null);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
+  const [favoriteEpisodes, setFavoriteEpisodes] = useState([]);
   const [Seasonloading, setSeasonloading] = useState(true);
 
   useEffect(() => {
@@ -55,6 +56,22 @@ const PodcastModalContent = ({
     setSelectedEpisodeUrl(episode.file); // Use the received prop to set the selected episode's URL
   };
 
+  const handleToggleFavorite = (episodeId) => {
+    const updatedFavorites = [...favoriteEpisodes];
+    const index = updatedFavorites.indexOf(episodeId);
+
+    if (index !== -1) {
+      updatedFavorites.splice(index, 1);
+    } else {
+      updatedFavorites.push(episodeId);
+    }
+
+    setFavoriteEpisodes(updatedFavorites);
+
+    // Save favorite episodes locally
+    localStorage.setItem('favoriteEpisodes', JSON.stringify(updatedFavorites));
+  };
+
   return (
     <div>
       <h2>{selectedShowData.title}</h2>
@@ -71,8 +88,16 @@ const PodcastModalContent = ({
                 onClick={() => handleEpisodeSelect(episode)}
               >
                 <Button variant="outlined">Play</Button>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon color="white" />
+                <IconButton
+                  aria-label="toggle favorite"
+                  onClick={() => handleToggleFavorite(episode.episode)}
+                  color={
+                    favoriteEpisodes.includes(episode.episode)
+                      ? 'secondary'
+                      : 'default'
+                  }
+                >
+                  <FavoriteIcon />
                 </IconButton>
                 <p>{episode.title}</p>
                 <p>{episode.description}</p>

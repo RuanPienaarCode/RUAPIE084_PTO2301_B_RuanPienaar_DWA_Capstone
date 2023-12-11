@@ -23,6 +23,8 @@ import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
 import TestPage from './pages/TestPage';
 import Footer from './components/footer';
+import FavouritePage from './pages/FavouritesPage';
+
 import Copyright from '../src/components/Copyright';
 import './styles/App.css';
 
@@ -144,6 +146,26 @@ export default function App() {
                   Logout
                 </Button>
               </NavLink>
+              <NavLink
+                to="/favourites"
+                className="nav-link"
+                activeclassname="active-link"
+                exact
+                sx={{
+                  fontSize: { xs: 20, md: 30 },
+                  marginLeft: '10px', // Add the desired spacing here
+                  margin: '0 auto',
+                }}
+              >
+                {' '}
+                <Button
+                  variant="outlined"
+                  onClick={() => logout()}
+                  sx={{ backgroundColor: '#fff' }}
+                >
+                  Favorites
+                </Button>
+              </NavLink>
             </Toolbar>
           </AppBar>
         </Container>
@@ -174,6 +196,7 @@ export default function App() {
               />
             }
           />
+          <Route path="favourites" element={<FavouritePage />} />
           <Route path="test" element={<TestPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

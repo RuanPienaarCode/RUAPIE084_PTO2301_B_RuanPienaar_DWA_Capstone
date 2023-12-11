@@ -93,6 +93,11 @@ body {
 .bottom-navbar {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.FilterButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
