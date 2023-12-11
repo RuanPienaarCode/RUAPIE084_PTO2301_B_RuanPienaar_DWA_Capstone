@@ -1,34 +1,33 @@
 // src/App.jsx
-
+import * as React from 'react';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Slide, useScrollTrigger } from '@mui/material';
-
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
 import getSupabase from './assets/fetchSupa';
-
 import { Navigate } from 'react-router-dom';
-
 import Home from './pages/HomePage';
 import Success from './pages/success';
 import Login from './pages/LoginPage';
 import Landing from './pages/Landing';
 import ErrorPage from './pages/ErrorPage';
-// import TestPage from './pages/TestPage';
 import Footer from './components/footer';
 import FavouritePage from './pages/FavouritesPage';
-
 import Copyright from '../src/components/Copyright';
 import './styles/App.css';
 
+/**
+ * The main application component that serves as the entry point for the entire app.
+ * Manages state, authentication, routing, and rendering of different pages.
+ * @returns {JSX.Element} - The rendered App component.
+ */
 export default function App() {
+  // State variables
   const [mode, setMode] = useState('light');
   const [PodcastData, setPodcastData] = useState([]);
   const [user, setUser] = useState(null);
@@ -37,12 +36,21 @@ export default function App() {
     '/public/test-mp3.mp3'
   );
 
+  // Supabase client
   const supabase = getSupabase();
 
+  /**
+   * Toggles between light and dark mode.
+   */
   const toggleDarkMode = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
+  /**
+   * Handles user logout.
+   * Navigates to the login page after successful logout.
+   * @async
+   */
   async function logout() {
     try {
       const { error } = await supabase.auth.signOut();
@@ -61,6 +69,11 @@ export default function App() {
     document.body.classList.add(mode);
   }, [mode]);
 
+  /**
+   * Hide the AppBar on scroll down and show it on scroll up.
+   * @param {Object} props - Component props.
+   * @returns {JSX.Element} - The Slide component for hiding on scroll.
+   */
   function HideOnScroll(props) {
     const { children } = props;
     const trigger = useScrollTrigger();
@@ -72,6 +85,10 @@ export default function App() {
     );
   }
 
+  /**
+   * Handles clicking on an episode to set the selected episode URL.
+   * @param {string} episodeUrl - The URL of the clicked episode.
+   */
   const handleEpisodeClick = (episodeUrl) => {
     console.log('Clicked on episode with URL:', episodeUrl);
     setSelectedEpisodeUrl(episodeUrl);
@@ -95,6 +112,7 @@ export default function App() {
               className="toolbar"
               sx={{ display: 'flex', alignItems: 'center' }}
             >
+              {/* Brand logo and link */}
               <NavLink to="/login">
                 <Typography
                   variant="h6"
@@ -111,6 +129,8 @@ export default function App() {
                   PODSPACE
                 </Typography>
               </NavLink>
+
+              {/* Login, Logout, and Favorites links */}
               <NavLink
                 to="/login"
                 className="nav-link"
@@ -118,11 +138,10 @@ export default function App() {
                 exact
                 sx={{
                   fontSize: { xs: 20, md: 30 },
-                  marginLeft: '10px', // Add the desired spacing here
+                  marginLeft: '10px',
                   margin: '0 auto',
                 }}
               >
-                {' '}
                 <AccountCircleIcon fontSize="medium" />
                 <Typography
                   variant="h6"
@@ -146,6 +165,7 @@ export default function App() {
                   Logout
                 </Button>
               </NavLink>
+
               <NavLink
                 to="/favourites"
                 className="nav-link"
@@ -160,6 +180,8 @@ export default function App() {
           </AppBar>
         </Container>
       </header>
+
+      {/* Main content */}
       <main>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -186,11 +208,12 @@ export default function App() {
               />
             }
           />
-          <Route path="favourites" element={<FavouritePage />} />
-
+          <Route path="/favourites" element={<FavouritePage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
+
+      {/* Footer and copyright */}
       <Footer selectedEpisodeUrl={selectedEpisodeUrl} />
       <Copyright sx={{ mt: 2 }} />
     </div>

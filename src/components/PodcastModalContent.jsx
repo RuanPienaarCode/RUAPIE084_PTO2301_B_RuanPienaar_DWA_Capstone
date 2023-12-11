@@ -5,10 +5,20 @@ import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 
+/**
+ * Component representing the content of the podcast modal.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.showId - The unique identifier for the podcast show.
+ * @param {Function} props.onClose - Callback function to close the modal.
+ * @param {Function} props.onEpisodeSelect - Callback function to handle episode selection.
+ * @param {Function} props.setSelectedEpisodeUrl - Callback function to set the selected episode's URL.
+ * @returns {JSX.Element} - The rendered PodcastModalContent component.
+ */
 const PodcastModalContent = ({
   showId,
   onClose,
-  setEpisode,
   onEpisodeSelect,
   setSelectedEpisodeUrl,
 }) => {
@@ -17,6 +27,9 @@ const PodcastModalContent = ({
   const [favoriteEpisodes, setFavoriteEpisodes] = useState([]);
   const [Seasonloading, setSeasonloading] = useState(true);
 
+  /**
+   * Fetches data for the selected podcast show.
+   */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -50,12 +63,22 @@ const PodcastModalContent = ({
     return <p>Error fetching show data. Please try again later.</p>;
   }
 
+  /**
+   * Handles the selection of an episode.
+   *
+   * @param {Object} episode - The selected episode object.
+   */
   const handleEpisodeSelect = (episode) => {
     setSelectedEpisode(episode);
     onEpisodeSelect(episode.file); // Pass the selected episode's URL to the parent
     setSelectedEpisodeUrl(episode.file); // Use the received prop to set the selected episode's URL
   };
 
+  /**
+   * Handles toggling favorite status for an episode.
+   *
+   * @param {string} episodeId - The unique identifier for the episode.
+   */
   const handleToggleFavorite = (episodeId) => {
     const updatedFavorites = [...favoriteEpisodes];
     const index = updatedFavorites.indexOf(episodeId);
@@ -116,7 +139,7 @@ PodcastModalContent.propTypes = {
   showId: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   onEpisodeSelect: PropTypes.func.isRequired,
-  setSelectedEpisodeUrl: PropTypes.func.isRequired, // Make sure the prop type is correct
+  setSelectedEpisodeUrl: PropTypes.func.isRequired,
 };
 
 export default PodcastModalContent;

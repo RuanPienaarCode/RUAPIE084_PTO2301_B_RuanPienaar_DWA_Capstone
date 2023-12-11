@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
+import PropTypes from 'prop-types';
 import PodcastCard from './PodcastCard';
 import genres from '../assets/genres';
 
+/**
+ * FetchPodcastData component fetches and displays podcasts with filter and search functionality.
+ * @component
+ * @returns {JSX.Element} - The rendered FetchPodcastData component.
+ */
 const FetchPodcastData = () => {
+  // State variables
   const [podcasts, setPodcasts] = useState([]);
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const genreMap = genres;
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [sortOption, setSortOption] = useState('titleAsc');
   const [reverseOrder, setReverseOrder] = useState(false);
 
-  // Function to apply filters and sorting
+  /**
+   * Applies filters and sorting to the podcast data.
+   * @function
+   * @param {Array} data - The array of podcast data.
+   * @param {string} searchTerm - The search term.
+   * @param {string} selectedGenre - The selected genre.
+   * @param {string} sortOption - The selected sort option.
+   * @param {boolean} reverseOrder - Flag to indicate if the order should be reversed.
+   * @returns {Array} - The filtered and sorted array of podcast data.
+   */
   const applyFiltersAndSort = (
     data,
     searchTerm,
@@ -35,8 +50,8 @@ const FetchPodcastData = () => {
 
     // Filter by selected genre
     if (selectedGenre !== 'All') {
-      const genreId = Object.keys(genreMap).find(
-        (key) => genreMap[key] === selectedGenre
+      const genreId = Object.keys(genres).find(
+        (key) => genres[key] === selectedGenre
       );
       filteredResults = filteredResults.filter((result) =>
         result.genres.includes(Number(genreId))
@@ -73,6 +88,11 @@ const FetchPodcastData = () => {
     return filteredResults;
   };
 
+  /**
+   * Fetches podcast data from an API or local storage.
+   * @async
+   * @function
+   */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -104,6 +124,10 @@ const FetchPodcastData = () => {
     }
   }, []);
 
+  /**
+   * Handles search term changes and updates the filtered podcasts.
+   * @effect
+   */
   useEffect(() => {
     const fuse = new Fuse(podcasts, {
       keys: ['title', 'description'],
@@ -118,6 +142,11 @@ const FetchPodcastData = () => {
     }
   }, [searchTerm, podcasts]);
 
+  /**
+   * Handles the search button click and updates the filtered podcasts.
+   * @function
+   * @async
+   */
   const handleSearch = async () => {
     setLoading(true);
 
@@ -141,6 +170,10 @@ const FetchPodcastData = () => {
     }
   };
 
+  /**
+   * Handles the "Clear Filters" button click and resets filters.
+   * @function
+   */
   const handleClearFilters = () => {
     setSearchTerm('');
     setSelectedGenre('All');
@@ -152,7 +185,8 @@ const FetchPodcastData = () => {
   return (
     <div className="PodcastGridSearch">
       <div>
-        <box className="FilterButtons">
+        {/* Additional comment: Ensure to use "div" instead of "box" */}
+        <div className="FilterButtons">
           <input
             type="text"
             placeholder="Search podcasts..."
@@ -164,7 +198,7 @@ const FetchPodcastData = () => {
             onChange={(e) => setSelectedGenre(e.target.value)}
           >
             <option value="All">All Genres</option>
-            {Object.values(genreMap).map((genre) => (
+            {Object.values(genres).map((genre) => (
               <option key={genre} value={genre}>
                 {genre}
               </option>
@@ -180,9 +214,10 @@ const FetchPodcastData = () => {
             <option value="dateDesc">Date Desc</option>
           </select>
 
+          {/* Additional comment: Update buttons and elements to use semantic HTML */}
           <button onClick={handleSearch}>Search</button>
           <button onClick={handleClearFilters}>Clear Filters</button>
-        </box>
+        </div>
       </div>
       <div className="PodcastGrid">
         {loading ? (
@@ -195,6 +230,14 @@ const FetchPodcastData = () => {
       </div>
     </div>
   );
+};
+
+// Prop types for FetchPodcastData component
+FetchPodcastData.propTypes = {
+  /**
+   * An array of podcast data.
+   */
+  podcasts: PropTypes.array.isRequired,
 };
 
 export default FetchPodcastData;

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/footer';
 import logo from '../assets/bolt.png';
 import Banner from '../assets/PodspaceBanner.png';
-import Carousel from '../components/carousel';
+import Carousel from '../components/Slider';
 
 export default function Landing() {
   return (

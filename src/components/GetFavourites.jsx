@@ -3,12 +3,26 @@ import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * GetFavourites component fetches and displays details for favorite episodes.
+ * @component
+ * @param {Object} props - The component's props.
+ * @param {string[]} props.favoriteEpisodes - Array of episode IDs marked as favorites.
+ * @returns {JSX.Element} - The rendered GetFavourites component.
+ */
 const GetFavourites = ({ favoriteEpisodes }) => {
   const [favoriteData, setFavoriteData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  /**
+   * Fetches details for a given episode ID.
+   * @async
+   * @function
+   * @param {string} episodeId - The ID of the episode to fetch details for.
+   * @returns {Promise<Object|null>} - A promise that resolves to the episode details or null if an error occurs.
+   */
   const fetchFavoriteDetails = async (episodeId) => {
     try {
       const response = await fetch(`https://your-api-endpoint/${episodeId}`);
@@ -26,6 +40,11 @@ const GetFavourites = ({ favoriteEpisodes }) => {
   };
 
   useEffect(() => {
+    /**
+     * Fetches details for each favorite episode and updates the component state.
+     * @async
+     * @function
+     */
     const fetchData = async () => {
       try {
         const favoriteDetails = await Promise.all(
@@ -70,7 +89,11 @@ const GetFavourites = ({ favoriteEpisodes }) => {
   );
 };
 
+// Prop types for GetFavourites component
 GetFavourites.propTypes = {
+  /**
+   * Array of episode IDs marked as favorites.
+   */
   favoriteEpisodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
