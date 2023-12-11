@@ -1,122 +1,18 @@
-// src/pages/Home.jsx
-import { useEffect, useState } from 'react';
-import { Box, Typography, Button, Paper } from '@mui/material';
-import PropTypes from 'prop-types';
-import { Navigate } from 'react-router-dom';
-import Search from '../components/search';
-// import PodcastCarousel from '../components/carousel';
-import Carousel from '../components/carousel';
-import getUserData from '../components/getUserData';
-import getSupabase from '../assets/fetchSupa';
+import '../styles/App.css';
+import FetchPodcastData from '../components/FetchPodcastData';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import '../styles/App.css';
 
-Home.propTypes = {
-  allPodcastData: PropTypes.any,
-  user: PropTypes.any,
-  setPodcastData: PropTypes.any,
-  setUser: PropTypes.any,
-};
-const supabase = getSupabase();
-
-export default function Home(props) {
-  const { allPodcastData, user, setPodcastData, setUser, episode, setEpisode } =
-    props;
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedPodcast, setSelectedPodcast] = useState(null);
-
-  useEffect(() => {
-    getUserData(setUser);
-  }, []);
-
-  async function logout() {
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error('Error during logout:', error);
-      }
-      Navigate('/login');
-    } catch (error) {
-      console.error('Error during logout:', error);
-    }
-  }
-
-  useEffect(() => {
-    try {
-      fetch('https://podcast-api.netlify.app/shows')
-        .then((res) => res.json())
-        .then((data) => {
-          setPodcastData(data);
-          console.log(`All podcast data:`, data);
-          console.log(allPodcastData);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error fetching podcast data:', error);
-          setError('Error fetching podcast data. Please try again later.');
-          setLoading(false);
-        });
-    } catch (error) {
-      console.error('Unexpected error:', error);
-    }
-  }, [setPodcastData]);
-
-  useEffect(() => {
-    console.log(allPodcastData);
-  }, [allPodcastData]);
-
+export default function TestPage() {
   return (
-    <Box
-      className="home"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-      }}
-    >
-      <div className="home">
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            width: '100vw',
-          }}
-        >
-          {/* <PodcastCarousel /> */}
-          <Carousel />
-        </Box>
-        <Box
-          className="navbar2"
-          sx={
-            {
-              // display: 'flex',
-              // flexGrow: 1,
-              // p: 3,
-              // backgroundColor: 'secondary',
-              // justifyContent: 'center',
-              // alignItems: 'center',
-            }
-          }
-        ></Box>
-
-        <Box className="search-box">
-          <Paper sx={{ backgroundColor: '#242424' }}>
-            <Search
-              allPodcastData={allPodcastData}
-              setLoading={setLoading}
-              loading={loading}
-              setEpisode={setEpisode}
-              selectedPodcast={selectedPodcast}
-              setSelectedPodcast={setSelectedPodcast}
-            />
-          </Paper>
-        </Box>
-        {error ? <Typography>{error}</Typography> : <div></div>}
-      </div>
-    </Box>
+    <div id="test-page">
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <FetchPodcastData />
+        </Grid>
+      </Box>
+    </div>
   );
 }

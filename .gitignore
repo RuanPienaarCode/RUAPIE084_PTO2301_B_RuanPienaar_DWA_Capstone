@@ -15,7 +15,9 @@ package-lock.json
 *.sln
 *.sw?
 
-
+# Ignore folder named "Dump"
+/Dump/
+*/Dump/
 
 # Ignore .env files
 .env

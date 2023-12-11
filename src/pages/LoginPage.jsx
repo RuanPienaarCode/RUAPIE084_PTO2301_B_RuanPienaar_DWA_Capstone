@@ -73,6 +73,9 @@ export default function Login(props) {
         socialLayout="horizontal"
         socialButtonSize="xlarge"
       />
+      <button onClick={() => navigate('/home')} aria-label="Go to Home Page">
+        Go to Home Page
+      </button>
       <button onClick={() => navigate('/success')} aria-label="Go to Success">
         Go to Success
       </button>

@@ -98,6 +98,20 @@ body {
   justify-content: center;
   align-items: center;
 }
+.GetFavouritesons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+}
+
+#favourite-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
