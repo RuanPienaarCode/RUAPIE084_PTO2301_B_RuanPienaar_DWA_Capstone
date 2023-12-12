@@ -1,3 +1,4 @@
+// components/PodcastModalContent.jsx
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AudioPlayer from './AudioPlayer';
@@ -70,8 +71,8 @@ const PodcastModalContent = ({
    */
   const handleEpisodeSelect = (episode) => {
     setSelectedEpisode(episode);
-    onEpisodeSelect(episode.file); // Pass the selected episode's URL to the parent
-    setSelectedEpisodeUrl(episode.file); // Use the received prop to set the selected episode's URL
+    onEpisodeSelect(episodeUrl); // Pass the selected episode's URL to the parent (PodcastCard)
+    setSelectedEpisodeUrl(episodeUrl); // Pass the selected episode's URL to the parent (main.jsx)
   };
 
   /**

@@ -1,3 +1,5 @@
+// components/modal.jsx
+
 import React from 'react';
 import PodcastModalContent from './PodcastModalContent';
 

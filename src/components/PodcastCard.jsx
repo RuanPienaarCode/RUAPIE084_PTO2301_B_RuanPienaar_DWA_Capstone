@@ -1,3 +1,4 @@
+// components/PodcastCard.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import GenreCard from './GenreCard';

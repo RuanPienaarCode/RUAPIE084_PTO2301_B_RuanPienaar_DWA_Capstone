@@ -205,6 +205,7 @@ export default function App() {
                 episode={episode}
                 selectedEpisodeUrl={selectedEpisodeUrl}
                 setSelectedEpisodeUrl={setSelectedEpisodeUrl}
+                handleEpisodeClick={handleEpisodeClick} //
               />
             }
           />
