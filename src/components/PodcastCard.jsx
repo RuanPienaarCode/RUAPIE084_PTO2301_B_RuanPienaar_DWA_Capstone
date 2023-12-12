@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import GenreCard from './GenreCard';
-import Modal from './Modal';
+import Modal from './modal';
 import PodcastModalContent from './PodcastModalContent';
 
 /**
