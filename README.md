@@ -6,7 +6,7 @@ Welcome to the repository for the final capstone project, Podspace! Podspace is 
 
 ###Demo
 
-[https://resilient-duckanoo-2120ce.netlify.app/](https://resilient-duckanoo-2120ce.netlify.app/home)
+[https://resilient-duckanoo-2120ce.netlify.app/](https://resilient-duckanoo-2120ce.netlify.app/)
 
 ## Project Overview
 
