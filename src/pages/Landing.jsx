@@ -31,7 +31,12 @@ export default function Landing() {
         >
           Podspace
         </Typography>
-
+        <img
+          className="Banner"
+          src={Banner}
+          alt="Bolt Banner"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
         <Carousel />
 
         <Stack
@@ -47,13 +52,6 @@ export default function Landing() {
             <Button variant="outlined">Sign Up</Button>
           </Link>
         </Stack>
-
-        <img
-          className="Banner"
-          src={Banner}
-          alt="Bolt Banner"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
       </Container>
     </Box>
   );
