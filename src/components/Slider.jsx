@@ -8,7 +8,7 @@ import 'react-multi-carousel/lib/styles.css';
  * @param {Object} props - The component's props.
  * @returns {JSX.Element} - The rendered PodcastCarousel component.
  */
-function PodcastCarousel(props) {
+const PodcastCarousel = (props) => {
   // State to hold the fetched podcast content
   const [content, setContent] = useState([]);
 
@@ -43,22 +43,23 @@ function PodcastCarousel(props) {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 6,
-      slidesToSlide: 6, // optional, default to 1.
+      slidesToSlide: 6,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 4,
-      slidesToSlide: 2, // optional, default to 1.
+      slidesToSlide: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1,
     },
   };
 
   return (
     <div className="carousel-container" style={{ maxWidth: '100%' }}>
+      {/* Carousel component with responsive settings */}
       <Carousel
         swipeable={true}
         responsive={responsive}
@@ -71,17 +72,19 @@ function PodcastCarousel(props) {
         {/* Render carousel items based on fetched podcast data */}
         {content.map((podcast, index) => (
           <div key={index}>
+            {/* Podcast image with styling */}
             <img
               src={podcast.image}
               alt={podcast.title}
               style={{ borderRadius: '5px', width: '100%', height: 'auto' }}
             />
+            {/* Podcast title */}
             <p>{podcast.title}</p>
           </div>
         ))}
       </Carousel>
     </div>
   );
-}
+};
 
 export default PodcastCarousel;
