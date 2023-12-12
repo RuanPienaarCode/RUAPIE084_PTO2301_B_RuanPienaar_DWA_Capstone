@@ -113,7 +113,7 @@ export default function App() {
               sx={{ display: 'flex', alignItems: 'center' }}
             >
               {/* Brand logo and link */}
-              <NavLink to="/login">
+              <NavLink to="/">
                 <Typography
                   variant="h6"
                   noWrap
