@@ -32,9 +32,7 @@ export default function App() {
   const [PodcastData, setPodcastData] = useState([]);
   const [user, setUser] = useState(null);
   const [episode, setEpisode] = useState(null);
-  const [selectedEpisodeUrl, setSelectedEpisodeUrl] = useState(
-    '/public/test-mp3.mp3'
-  );
+  const [selectedEpisodeUrl, setSelectedEpisodeUrl] = useState('/test-mp3.mp3');
 
   // Supabase client
   const supabase = getSupabase();
