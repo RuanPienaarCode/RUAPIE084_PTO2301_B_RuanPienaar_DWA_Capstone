@@ -20,8 +20,7 @@ const CustomErrorPage = () => {
 
   return (
     <Box id="custom-error-page">
-      <h1>You have an Error</h1>
-      <p>An unexpected error has occurred.</p>
+      <h1>An unexpected error has occurred.</h1>
       <p>
         <i>
           {error && error.statusText

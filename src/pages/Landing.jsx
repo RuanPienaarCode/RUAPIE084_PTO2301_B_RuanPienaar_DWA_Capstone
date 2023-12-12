@@ -23,14 +23,6 @@ export default function Landing() {
       }}
     >
       <Container maxWidth="md">
-        <Typography
-          component="h1"
-          variant="h3"
-          align="center"
-          color="secondary"
-        >
-          Podspace
-        </Typography>
         <img
           className="Banner"
           src={Banner}

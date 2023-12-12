@@ -61,15 +61,11 @@ function PodcastCarousel(props) {
     <div className="carousel-container" style={{ maxWidth: '100%' }}>
       <Carousel
         swipeable={true}
-        draggable={false}
-        showDots={true}
         responsive={responsive}
         infinite={true}
         customTransition="all .5"
         containerClass="carousel-container"
         removeArrowOnDeviceType={['tablet', 'mobile']}
-        deviceType="desktop"
-        dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
         {/* Render carousel items based on fetched podcast data */}
